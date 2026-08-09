@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), ui-serif, Georgia, serif;
+
+  --color-goa-green: var(--goa-green);
+  --color-goa-green-deep: var(--goa-green-deep);
+  --color-goa-green-panel: var(--goa-green-panel);
+  --color-goa-yellow: var(--goa-yellow);
+  --color-goa-pink: var(--goa-pink);
+  --color-goa-sand: var(--goa-sand);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  color-scheme: light;
+
+  --goa-green: #0a7a3f;
+  --goa-green-deep: #075c2f;
+  --goa-green-panel: #0d6a39;
+  --goa-yellow: #fee101;
+  --goa-pink: #ff0080;
+  --goa-sand: #f4f6ee;
+
+  --background: #0a7a3f;
+  --foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0a3d22;
+  --popover: #ffffff;
+  --popover-foreground: #0a3d22;
+  --primary: #fee101;
+  --primary-foreground: #0a3d22;
+  --secondary: #ff0080;
+  --secondary-foreground: #ffffff;
+  --muted: #0d6a39;
+  --muted-foreground: #bfe6cf;
+  --accent: #ff0080;
+  --accent-foreground: #ffffff;
+  --destructive: #e11d48;
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: #fee101;
+  --radius: 0.625rem;
+}
+
+/* Keep the brand palette regardless of system light/dark preference */
+.dark,
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: light;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  /* dotted paper texture for the beach vibe */
+  .goa-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+  }
+  .goa-ticket-notch {
+    -webkit-mask-image: radial-gradient(circle 12px at 0 50%, transparent 12px, #000 13px),
+      radial-gradient(circle 12px at 100% 50%, transparent 12px, #000 13px);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
